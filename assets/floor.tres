@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c7oecaq661qnc"]
+
+[ext_resource type="Texture2D" uid="uid://bnhicn26g3skr" path="res://assets/textures/tile.png" id="1_grv78"]
+
+[resource]
+albedo_color = Color(0.138638, 0.138637, 0.138637, 1)
+albedo_texture = ExtResource("1_grv78")
+albedo_texture_force_srgb = true
+normal_scale = 12.15
