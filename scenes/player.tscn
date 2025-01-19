@@ -1,15 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://drf3fpdfp41m1"]
+[gd_scene load_steps=5 format=3 uid="uid://drf3fpdfp41m1"]
 
-[ext_resource type="Script" path="res://code/player.gd" id="1_0oqw5"]
+[ext_resource type="Script" path="res://code/car_body.gd" id="1_ei3af"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m4qka"]
+friction = 0.1
+bounce = 0.1
+absorbent = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_viirg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fklvx"]
 
 [node name="Player" type="Node3D"]
-script = ExtResource("1_0oqw5")
 
 [node name="car_body" type="RigidBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_m4qka")
+script = ExtResource("1_ei3af")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="car_body"]
 shape = SubResource("BoxShape3D_viirg")

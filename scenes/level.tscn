@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmmcait1w5luo"]
+[gd_scene load_steps=8 format=3 uid="uid://bmmcait1w5luo"]
 
 [ext_resource type="Material" uid="uid://c7oecaq661qnc" path="res://assets/floor.tres" id="1_v23rp"]
+[ext_resource type="PackedScene" uid="uid://drf3fpdfp41m1" path="res://scenes/player.tscn" id="2_fe6j6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8dtp5"]
 sky_top_color = Color(0.129, 0.129, 0.129, 1)
@@ -40,3 +41,9 @@ mesh = SubResource("PlaneMesh_65sjq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_1e2tw")
+
+[node name="Player" parent="." instance=ExtResource("2_fe6j6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194487, 0.895945, 2.56304)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.890086, 0.455793, 0, -0.455793, 0.890086, 0, 5.8357, 10.7214)
