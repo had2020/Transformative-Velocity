@@ -1,49 +1,45 @@
-[gd_scene load_steps=10 format=3 uid="uid://uusysh6cecr1"]
+[gd_scene load_steps=11 format=3 uid="uid://uusysh6cecr1"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_qoygn"]
-[ext_resource type="Material" uid="uid://c7oecaq661qnc" path="res://assets/floor.tres" id="2_0tvuc"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="3_jndew"]
 [ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="4_ddfnh"]
+[ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_y445b"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8dtp5"]
-sky_top_color = Color(0.129, 0.129, 0.129, 1)
-sky_horizon_color = Color(0.129, 0.129, 0.129, 1)
-ground_bottom_color = Color(0.129, 0.129, 0.129, 1)
-ground_horizon_color = Color(0.129, 0.129, 0.129, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6i2r3"]
+sky_top_color = Color(0.478431, 0.956863, 1, 1)
+sky_horizon_color = Color(0.754714, 0.809744, 0.75, 1)
+ground_bottom_color = Color(0.540426, 0.282115, 0, 1)
+ground_horizon_color = Color(0.754714, 0.809744, 0.75, 1)
 
-[sub_resource type="Sky" id="Sky_gw3lh"]
-sky_material = SubResource("ProceduralSkyMaterial_8dtp5")
+[sub_resource type="Sky" id="Sky_j7qja"]
+sky_material = SubResource("ProceduralSkyMaterial_6i2r3")
 
-[sub_resource type="Environment" id="Environment_n2bx4"]
+[sub_resource type="Environment" id="Environment_n6cbw"]
 background_mode = 2
-sky = SubResource("Sky_gw3lh")
+sky = SubResource("Sky_j7qja")
 tonemap_mode = 2
+ssao_enabled = true
+glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_65sjq"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wnsn"]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1e2tw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nvrg"]
+albedo_color = Color(1, 0.501961, 0.00784314, 1)
+emission_enabled = true
+emission_energy_multiplier = 16.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mc82a"]
+material = SubResource("StandardMaterial3D_4nvrg")
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_qoygn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_n2bx4")
+environment = SubResource("Environment_n6cbw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
-
-[node name="floor" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-material_override = ExtResource("2_0tvuc")
-mesh = SubResource("PlaneMesh_65sjq")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_1e2tw")
 
 [node name="car" parent="." instance=ExtResource("3_jndew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130992, 0, 2.26359)
@@ -52,4 +48,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130992, 0, 2.26359)
 stream = ExtResource("4_ddfnh")
 autoplay = true
 
+[node name="floor_tile" parent="." instance=ExtResource("4_y445b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00919151, 0.0328088, 0.0199165)
+
+[node name="Lava" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.74738, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lava"]
+shape = SubResource("WorldBoundaryShape3D_2wnsn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Lava"]
+transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
+mesh = SubResource("PlaneMesh_mc82a")
+skeleton = NodePath("")
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="area_entered" from="Lava" to="." method="_on_lava_area_entered"]
+[connection signal="area_shape_entered" from="Lava" to="." method="_on_lava_area_shape_entered"]
+[connection signal="body_entered" from="Lava" to="." method="_on_lava_body_entered"]
+[connection signal="body_shape_entered" from="Lava" to="." method="_on_lava_body_shape_entered"]

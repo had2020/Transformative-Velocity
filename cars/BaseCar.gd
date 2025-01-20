@@ -72,7 +72,6 @@ func _on_up_button_button_down() -> void:
 	up = true
 
 
-
 func _on_left_button_button_down() -> void:
 	steer_button_target = 1;
 

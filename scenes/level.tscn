@@ -33,16 +33,16 @@ environment = SubResource("Environment_n2bx4")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="floor" type="Node3D" parent="."]
+[node name="world floor" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="world floor"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 material_override = ExtResource("1_v23rp")
 mesh = SubResource("PlaneMesh_65sjq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="world floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="world floor/StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_1e2tw")
 
 [node name="car" parent="." instance=ExtResource("2_trxeh")]
