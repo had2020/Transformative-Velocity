@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://blkasq375agl8"]
+
+[ext_resource type="Script" path="res://scenes/level_item.gd" id="1_1ev41"]
+[ext_resource type="Texture2D" uid="uid://7q2vp67qjxjx" path="res://icon.svg" id="1_dx5em"]
+
+[node name="Level_select" type="Node2D"]
+
+[node name="Level_item" type="Node2D" parent="."]
+position = Vector2(198, 265)
+script = ExtResource("1_1ev41")
+level_name = "1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_item"]
+scale = Vector2(3, 3)
+texture = ExtResource("1_dx5em")
+
+[node name="Label" type="Label" parent="Level_item"]
+offset_left = -137.0
+offset_top = -282.0
+offset_right = -46.0
+offset_bottom = -259.0
+scale = Vector2(4.84, 4.84)
+text = "Level 1"
+
+[node name="Button" type="Button" parent="Level_item"]
+offset_left = -132.0
+offset_top = 194.0
+offset_right = -91.0
+offset_bottom = 225.0
+scale = Vector2(5.92, 5.92)
+text = "Play"

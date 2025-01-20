@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmmcait1w5luo"]
+[gd_scene load_steps=10 format=3 uid="uid://bmmcait1w5luo"]
 
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_6yq8n"]
 [ext_resource type="Material" uid="uid://c7oecaq661qnc" path="res://assets/floor.tres" id="1_v23rp"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_trxeh"]
+[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="4_8fjdi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8dtp5"]
 sky_top_color = Color(0.129, 0.129, 0.129, 1)
@@ -22,6 +24,7 @@ tonemap_mode = 2
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1e2tw"]
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_6yq8n")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_n2bx4")
@@ -46,3 +49,7 @@ shape = SubResource("WorldBoundaryShape3D_1e2tw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130992, 0, 2.26359)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8fjdi")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
