@@ -1,10 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://duy0dbkychify"]
+[gd_scene load_steps=7 format=3 uid="uid://duy0dbkychify"]
 
 [ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_iqrfq"]
-[ext_resource type="ArrayMesh" uid="uid://cf6xx7qtk58u0" path="res://assets/car.obj" id="2_km4ov"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
 size = Vector3(1.9717, 1, 2.08592)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lui0j"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u5god"]
+material = SubResource("StandardMaterial3D_lui0j")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvmww"]
+albedo_color = Color(0, 0.384314, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qoqf8"]
+material = SubResource("StandardMaterial3D_gvmww")
 
 [node name="car" type="VehicleBody3D"]
 center_of_mass_mode = 1
@@ -129,9 +140,25 @@ text = "Restart"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.988387, 0.151961, 0, -0.151961, 0.988387, 0, 3.37968, 5.44511)
 
-[node name="Car" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7, 0, -1.05697e-07, 0, 0.7, 0, 1.05697e-07, 0, -0.7, 0, -0.267294, 0)
-mesh = ExtResource("2_km4ov")
+[node name="body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.44093, 0, -7.30858e-07, 0, 0.7, 0, 3.6857e-07, 0, -4.84025, 0, 0.121598, 0)
+mesh = SubResource("BoxMesh_u5god")
+
+[node name="rail" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.44093, 0, -5.91274e-08, 1.13686e-07, 0.0840193, -0.120785, 3.50598e-07, -0.0272444, -0.372489, 0, 0.990425, 2.22218)
+mesh = SubResource("BoxMesh_u5god")
+
+[node name="bar" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, 9.38864e-09, -8.79886e-08, 7.53741e-08, 0.00486435, -0.607099, -5.08612e-08, -0.0850878, -0.034707, 0.772402, 0.633444, 2.17447)
+mesh = SubResource("BoxMesh_u5god")
+
+[node name="bar2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.5, 9.38483e-09, -8.83749e-08, 7.53741e-08, 0.0048624, -0.609765, -5.0861e-08, -0.0850536, -0.0348594, -0.825683, 0.633444, 2.17447)
+mesh = SubResource("BoxMesh_u5god")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.39692, 0, 0, 0, 0.380983, -0.477796, 0, 0.0823506, 2.21046, -0.0277523, 0.556672, 0.147649)
+mesh = SubResource("BoxMesh_qoqf8")
 
 [connection signal="button_down" from="Hud/Up_Button" to="." method="_on_up_button_button_down"]
 [connection signal="button_up" from="Hud/Up_Button" to="." method="_on_up_button_button_up"]
