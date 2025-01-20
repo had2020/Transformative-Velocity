@@ -29,3 +29,14 @@ offset_right = -91.0
 offset_bottom = 225.0
 scale = Vector2(5.92, 5.92)
 text = "Play"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 488.0
+offset_top = 176.0
+offset_right = 634.0
+offset_bottom = 225.0
+scale = Vector2(3.92244, 3.92244)
+text = "WIP
+\"Work In Progress\""
+
+[connection signal="pressed" from="Level_item/Button" to="Level_item" method="_on_button_pressed"]
