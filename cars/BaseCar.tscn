@@ -11,8 +11,6 @@ size = Vector3(1.9717, 1, 2.08592)
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, -0.1, 0)
 script = ExtResource("1_iqrfq")
-STEER_LIMIT = 0.8
-engine_force_value = 100
 
 [node name="wheal0" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
@@ -115,6 +113,19 @@ rotation = -4.69519
 scale = Vector2(3.99235, 3.99235)
 text = "/\\"
 
+[node name="Exit_bp" type="Button" parent="Hud"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(2.06279, 2.18174)
+text = "Exit"
+
+[node name="Restart_bp" type="Button" parent="Hud"]
+offset_left = 1024.0
+offset_right = 1089.0
+offset_bottom = 31.0
+scale = Vector2(1.97393, 2.41393)
+text = "Restart"
+
 [node name="body" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.14432, 0, 0, 0, 1, 0, 0, 0, 4.05311, 0, 0.710586, 0)
 mesh = SubResource("BoxMesh_chjf6")
@@ -130,3 +141,5 @@ transform = Transform3D(0.466349, 0, 0, 0, 0.988387, 0.151961, 0, -0.0374924, 0.
 [connection signal="button_up" from="Hud/Left_button" to="." method="_on_left_button_button_up"]
 [connection signal="button_down" from="Hud/Right_button" to="." method="_on_right_button_button_down"]
 [connection signal="button_up" from="Hud/Right_button" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="Hud/Exit_bp" to="." method="_on_exit_bp_pressed"]
+[connection signal="pressed" from="Hud/Restart_bp" to="." method="_on_restart_bp_pressed"]

@@ -1,11 +1,11 @@
 extends VehicleBody3D
 
 
-@export var STEER_SPEED = 1.5
-@export var STEER_LIMIT = 0.6
+var STEER_SPEED = 1.5
+var STEER_LIMIT = 0.6
 var steer_target = 0
 var steer_button_target = 0
-@export var engine_force_value = 40
+var engine_force_value = 150
 
 var up:bool = false
 var down = false
@@ -83,3 +83,12 @@ func _on_left_button_button_up() -> void:
 
 func _on_right_button_button_up() -> void:
 	steer_button_target = 0;
+
+
+
+
+func _on_restart_bp_pressed() -> void:
+	get_tree().reload_current_scene()
+
+func _on_exit_bp_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu.tscn")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://61ut5m70glvx"]
+
+[ext_resource type="Script" path="res://scenes/finish_line.gd" id="1_l585n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7xfa"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.419608)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvxbv"]
+material = SubResource("StandardMaterial3D_w7xfa")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryk7g"]
+
+[node name="Finish line" type="Node3D"]
+script = ExtResource("1_l585n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.06197, 0, 0, 0, 6.28353, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_cvxbv")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(8.71162, 0, 0, 0, 6.98672, 0, 0, 0, 2.49975, 0, 0, 0)
+shape = SubResource("BoxShape3D_ryk7g")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_shape_entered" from="Area3D" to="." method="_on_area_3d_area_shape_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
