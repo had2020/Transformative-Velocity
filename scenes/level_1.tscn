@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://uusysh6cecr1"]
+[gd_scene load_steps=10 format=3 uid="uid://uusysh6cecr1"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_qoygn"]
 [ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="3_jndew"]
@@ -6,37 +6,27 @@
 [ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_y445b"]
 [ext_resource type="PackedScene" uid="uid://61ut5m70glvx" path="res://scenes/finish_line.tscn" id="5_c44sf"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6i2r3"]
-sky_top_color = Color(0.478431, 0.956863, 1, 1)
-sky_horizon_color = Color(0.754714, 0.809744, 0.75, 1)
-ground_bottom_color = Color(0.540426, 0.282115, 0, 1)
-ground_horizon_color = Color(0.754714, 0.809744, 0.75, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5hklr"]
+sky_top_color = Color(0, 0.769445, 0.820386, 1)
+sky_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
+ground_bottom_color = Color(1, 0.301961, 0, 1)
+ground_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
 
-[sub_resource type="Sky" id="Sky_j7qja"]
-sky_material = SubResource("ProceduralSkyMaterial_6i2r3")
+[sub_resource type="Sky" id="Sky_htovp"]
+sky_material = SubResource("ProceduralSkyMaterial_5hklr")
 
-[sub_resource type="Environment" id="Environment_n6cbw"]
+[sub_resource type="Environment" id="Environment_0ayn8"]
 background_mode = 2
-sky = SubResource("Sky_j7qja")
+sky = SubResource("Sky_htovp")
 tonemap_mode = 2
-ssao_enabled = true
-glow_enabled = true
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wnsn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4nvrg"]
-albedo_color = Color(1, 0.501961, 0.00784314, 1)
-emission_enabled = true
-emission_energy_multiplier = 16.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_mc82a"]
-material = SubResource("StandardMaterial3D_4nvrg")
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_qoygn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_n6cbw")
+environment = SubResource("Environment_0ayn8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -54,11 +44,6 @@ transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0.000709534, -24.5274, -0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lava"]
 shape = SubResource("WorldBoundaryShape3D_2wnsn")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Lava"]
-transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -0.0388855, 0.0651169, 0.0672928)
-mesh = SubResource("PlaneMesh_mc82a")
-skeleton = NodePath("")
 
 [node name="floors" type="Node3D" parent="."]
 
