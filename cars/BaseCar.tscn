@@ -76,9 +76,57 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 
+[node name="Up_Button" type="Button" parent="Hud"]
+modulate = Color(0, 1, 0, 1)
+offset_left = 69.8362
+offset_top = 271.0
+offset_right = 90.8362
+offset_bottom = 302.0
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Down_Button" type="Button" parent="Hud"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 152.0
+offset_top = 538.0
+offset_right = 173.0
+offset_bottom = 569.0
+rotation = 3.15044
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Left_button" type="Button" parent="Hud"]
+modulate = Color(0, 1, 0, 1)
+offset_left = 813.0
+offset_top = 583.834
+offset_right = 834.0
+offset_bottom = 614.834
+rotation = -1.55914
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Right_button" type="Button" parent="Hud"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 1092.0
+offset_top = 505.834
+offset_right = 1113.0
+offset_bottom = 536.834
+rotation = -4.69519
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
 [node name="body" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.14432, 0, 0, 0, 1, 0, 0, 0, 4.05311, 0, 0.710586, 0)
 mesh = SubResource("BoxMesh_chjf6")
 
 [node name="Camera3D" type="Camera3D" parent="body"]
 transform = Transform3D(0.466349, 0, 0, 0, 0.988387, 0.151961, 0, -0.0374924, 0.243859, 0, 2.66909, 1.34344)
+
+[connection signal="button_down" from="Hud/Up_Button" to="." method="_on_up_button_button_down"]
+[connection signal="button_up" from="Hud/Up_Button" to="." method="_on_up_button_button_up"]
+[connection signal="button_down" from="Hud/Down_Button" to="." method="_on_down_button_button_down"]
+[connection signal="button_up" from="Hud/Down_Button" to="." method="_on_down_button_button_up"]
+[connection signal="button_down" from="Hud/Left_button" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="Hud/Left_button" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="Hud/Right_button" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="Hud/Right_button" to="." method="_on_right_button_button_up"]

@@ -4,7 +4,13 @@ extends VehicleBody3D
 @export var STEER_SPEED = 1.5
 @export var STEER_LIMIT = 0.6
 var steer_target = 0
+var steer_button_target = 0
 @export var engine_force_value = 40
+
+var up:bool = false
+var down = false
+var left = false
+var right = false
 
 
 func _physics_process(delta):
@@ -14,8 +20,9 @@ func _physics_process(delta):
 
 	var fwd_mps = transform.basis.x.x
 	steer_target = Input.get_action_strength("left") - Input.get_action_strength("right")
+	steer_target += steer_button_target
 	steer_target *= STEER_LIMIT
-	if Input.is_action_pressed("backward"):
+	if Input.is_action_pressed("backward") or down:
 
 		if speed < 20 and speed != 0:
 			engine_force = clamp(engine_force_value * 3 / speed, 0, 300)
@@ -23,7 +30,7 @@ func _physics_process(delta):
 			engine_force = engine_force_value
 	else:
 		engine_force = 0
-	if Input.is_action_pressed("foward"):
+	if Input.is_action_pressed("foward") or up:
 		if fwd_mps >= -1:
 			if speed < 30 and speed != 0:
 				engine_force = -clamp(engine_force_value * 10 / speed, 0, 300)
@@ -50,3 +57,30 @@ func _physics_process(delta):
 
 func traction(speed):
 	apply_central_force(Vector3.DOWN*speed)
+
+
+func _on_up_button_button_up() -> void:
+	up = false
+
+func _on_down_button_button_up() -> void:
+	down = false
+
+func _on_down_button_button_down() -> void:
+	down = true
+
+func _on_up_button_button_down() -> void:
+	up = true
+
+
+
+func _on_left_button_button_down() -> void:
+	steer_button_target = 1;
+
+func _on_right_button_button_down() -> void:
+	steer_button_target = -1;
+
+func _on_left_button_button_up() -> void:
+	steer_button_target = 0;
+
+func _on_right_button_button_up() -> void:
+	steer_button_target = 0;

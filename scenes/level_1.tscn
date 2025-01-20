@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://uusysh6cecr1"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_qoygn"]
+[ext_resource type="Material" uid="uid://c7oecaq661qnc" path="res://assets/floor.tres" id="2_0tvuc"]
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="3_jndew"]
+[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="4_ddfnh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8dtp5"]
+sky_top_color = Color(0.129, 0.129, 0.129, 1)
+sky_horizon_color = Color(0.129, 0.129, 0.129, 1)
+ground_bottom_color = Color(0.129, 0.129, 0.129, 1)
+ground_horizon_color = Color(0.129, 0.129, 0.129, 1)
+
+[sub_resource type="Sky" id="Sky_gw3lh"]
+sky_material = SubResource("ProceduralSkyMaterial_8dtp5")
+
+[sub_resource type="Environment" id="Environment_n2bx4"]
+background_mode = 2
+sky = SubResource("Sky_gw3lh")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_65sjq"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_1e2tw"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_qoygn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n2bx4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="floor" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("2_0tvuc")
+mesh = SubResource("PlaneMesh_65sjq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_1e2tw")
+
+[node name="car" parent="." instance=ExtResource("3_jndew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130992, 0, 2.26359)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ddfnh")
+autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
