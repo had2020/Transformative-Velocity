@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://drf3fpdfp41m1"]
+[gd_scene load_steps=6 format=3 uid="uid://drf3fpdfp41m1"]
 
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ckcrx"]
 [ext_resource type="Script" path="res://code/car_body.gd" id="1_ei3af"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m4qka"]
@@ -12,6 +13,7 @@ absorbent = true
 [sub_resource type="BoxMesh" id="BoxMesh_fklvx"]
 
 [node name="Player" type="Node3D"]
+script = ExtResource("1_ckcrx")
 
 [node name="car_body" type="RigidBody3D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_m4qka")
@@ -22,3 +24,9 @@ shape = SubResource("BoxShape3D_viirg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="car_body"]
 mesh = SubResource("BoxMesh_fklvx")
+
+[node name="Third_person_spot" type="Node3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 1.5)
+
+[node name="First_person_spot" type="Node3D" parent="car_body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -1)
