@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://blkasq375agl8"]
+[gd_scene load_steps=5 format=3 uid="uid://blkasq375agl8"]
 
 [ext_resource type="Script" path="res://scenes/level_item.gd" id="1_1ev41"]
-[ext_resource type="Texture2D" uid="uid://7q2vp67qjxjx" path="res://icon.svg" id="1_dx5em"]
+[ext_resource type="Texture2D" uid="uid://b0vabc1t2wens" path="res://assets/easy Small.png" id="2_cd55w"]
+[ext_resource type="Texture2D" uid="uid://b5ciqlfnvm6qc" path="res://assets/med Small.png" id="3_5s0bn"]
+[ext_resource type="Texture2D" uid="uid://i7v60vrgtwtg" path="res://assets/hard Small.png" id="4_hebda"]
 
 [node name="Level_select" type="Node2D"]
 
@@ -11,8 +13,7 @@ script = ExtResource("1_1ev41")
 level_num = "1"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_item"]
-scale = Vector2(3, 3)
-texture = ExtResource("1_dx5em")
+texture = ExtResource("2_cd55w")
 
 [node name="Label" type="Label" parent="Level_item"]
 offset_left = -137.0
@@ -30,13 +31,65 @@ offset_bottom = 225.0
 scale = Vector2(5.92, 5.92)
 text = "Play"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 488.0
-offset_top = 176.0
-offset_right = 634.0
+[node name="Level_item2" type="Node2D" parent="."]
+position = Vector2(564, 264)
+script = ExtResource("1_1ev41")
+level_num = "2"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_item2"]
+texture = ExtResource("3_5s0bn")
+
+[node name="Label" type="Label" parent="Level_item2"]
+offset_left = -137.0
+offset_top = -282.0
+offset_right = -46.0
+offset_bottom = -259.0
+scale = Vector2(4.84, 4.84)
+text = "Level 2"
+
+[node name="Button" type="Button" parent="Level_item2"]
+offset_left = -132.0
+offset_top = 194.0
+offset_right = -91.0
 offset_bottom = 225.0
-scale = Vector2(3.92244, 3.92244)
+scale = Vector2(5.92, 5.92)
+text = "Play"
+
+[node name="Level_item3" type="Node2D" parent="."]
+position = Vector2(938, 264)
+script = ExtResource("1_1ev41")
+level_num = "3"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_item3"]
+position = Vector2(-2, 0)
+texture = ExtResource("4_hebda")
+
+[node name="Label" type="Label" parent="Level_item3"]
+offset_left = -137.0
+offset_top = -282.0
+offset_right = -46.0
+offset_bottom = -259.0
+scale = Vector2(4.84, 4.84)
+text = "Level 2"
+
+[node name="Button" type="Button" parent="Level_item3"]
+offset_left = -132.0
+offset_top = 194.0
+offset_right = -91.0
+offset_bottom = 225.0
+scale = Vector2(5.92, 5.92)
+text = "Play"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1039.0
+offset_top = -1.00003
+offset_right = 1185.0
+offset_bottom = 74.0
+scale = Vector2(0.76244, 1.82084)
 text = "WIP
-\"Work In Progress\""
+\"Work In Progress\"
+TODO!"
 
 [connection signal="pressed" from="Level_item/Button" to="Level_item" method="_on_button_pressed"]
+[connection signal="pressed" from="Level_item2/Button" to="Level_item2" method="_on_button_pressed"]
+[connection signal="pressed" from="Level_item3/Button" to="Level_item3" method="_on_button_pressed"]

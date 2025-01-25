@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://dk7tnpydrny47"]
+
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_k5kp0"]
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_6ekic"]
+[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="3_26bgp"]
+[ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_kyh04"]
+[ext_resource type="PackedScene" uid="uid://61ut5m70glvx" path="res://scenes/finish_line.tscn" id="5_pyq5r"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5hklr"]
+sky_top_color = Color(0, 0.769445, 0.820386, 1)
+sky_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
+ground_bottom_color = Color(1, 0.301961, 0, 1)
+ground_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
+
+[sub_resource type="Sky" id="Sky_htovp"]
+sky_material = SubResource("ProceduralSkyMaterial_5hklr")
+
+[sub_resource type="Environment" id="Environment_0ayn8"]
+background_mode = 2
+sky = SubResource("Sky_htovp")
+tonemap_mode = 2
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wnsn"]
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_k5kp0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0ayn8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="car" parent="." instance=ExtResource("2_6ekic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.130992, 0, 2.26359)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_26bgp")
+autoplay = true
+
+[node name="Lava" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0.000709534, -109.029, -0.0475006)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Lava"]
+shape = SubResource("WorldBoundaryShape3D_2wnsn")
+
+[node name="floors" type="Node3D" parent="."]
+
+[node name="floor_tile" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00919151, 0.0328088, 0.0199165)
+
+[node name="Tunnel" type="Node3D" parent="floors"]
+transform = Transform3D(1, 0, 0, 0, 0.991698, 0.128588, 0, -0.128588, 0.991698, -0.119743, -15.3906, -188.192)
+
+[node name="floor_tile5" parent="floors/Tunnel" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.14671, 0, 0, 0, 19.5765, 0.977521, -7.99451, -14.6866)
+
+[node name="floor_tile8" parent="floors/Tunnel" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.09708, -0.319547, 0, 0.333695, 1.05057, 0.977517, -5.11881, 85.7679)
+
+[node name="floor_tile9" parent="floors/Tunnel" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.09708, -0.319547, 0, 0.333695, 1.05057, 0.938066, -5.089, 10.569)
+
+[node name="floor_tile10" parent="floors/Tunnel" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.09708, -0.319547, 0, 0.333695, 1.05057, 0.938066, -5.089, -76.5693)
+
+[node name="floor_tile7" parent="floors/Tunnel" instance=ExtResource("4_kyh04")]
+transform = Transform3D(-0.642788, 0.87843, 1.71143e-06, 0.766044, 0.73709, 0, -5.61943e-08, 7.67948e-08, -19.5765, -12.4924, -1.11827, -14.8164)
+
+[node name="floor_tile11" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.14671, 0, 0, 0, 8.76577, -2.53153, -48.0184, -462.458)
+
+[node name="floor_tile12" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.14671, 0, 0, 0, 1.04667, -2.53153, -53.4428, -556.402)
+
+[node name="floor_tile13" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.14671, 0, 0, 0, 1.04667, -2.53153, -59.1753, -574.294)
+
+[node name="floor_tile14" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(1, 0, 0, 0, 1.14671, 0, 0, 0, 1.04667, -2.53153, -66.5316, -604.521)
+
+[node name="floor_tile15" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(0.671229, 0, 4.79195, 0, 1.14671, 0, -0.74125, 0, 4.33929, -42.8421, -74.1198, -657.481)
+
+[node name="floor_tile16" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(-0.512208, 0, 5.55227, 0, 1.14671, 0, -0.858862, 0, -3.31126, -134.07, -74.2686, -672.103)
+
+[node name="floor_tile17" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(-0.769188, 0, 4.13109, 0, 1.14671, 0, -0.639023, 0, -4.97256, -225.114, -74.9211, -593.521)
+
+[node name="floor_tile18" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(-0.94839, 0, 2.04999, 0, 1.14671, 0, -0.317106, 0, -6.13105, -279.837, -75.7315, -495.9)
+
+[node name="floor_tile19" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(0.310676, 0.460638, 5.56907, 1.91566e-08, 1.03927, -2.7321, -0.950516, 0.15056, 1.82025, -340.461, -59.0349, -458.391)
+
+[node name="floor_tile20" parent="floors" instance=ExtResource("4_kyh04")]
+transform = Transform3D(-2.12311, 0, 1.15103, 0, 1.14671, 0, -0.571388, 0, -4.27688, -323.254, -87.0875, -344.287)
+
+[node name="Finish line" parent="floors" instance=ExtResource("5_pyq5r")]
+transform = Transform3D(5.00606, 0, -0.022988, 0, 2.64153, 0, 1.08244, 0, 0.106315, -332.333, -81.1082, -297.975)
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="area_entered" from="Lava" to="." method="_on_lava_area_entered"]
+[connection signal="area_shape_entered" from="Lava" to="." method="_on_lava_area_shape_entered"]
+[connection signal="body_entered" from="Lava" to="." method="_on_lava_body_entered"]
+[connection signal="body_shape_entered" from="Lava" to="." method="_on_lava_body_shape_entered"]
