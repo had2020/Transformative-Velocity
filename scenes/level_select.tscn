@@ -1,19 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://blkasq375agl8"]
 
 [ext_resource type="Script" path="res://scenes/level_item.gd" id="1_1ev41"]
-[ext_resource type="Texture2D" uid="uid://b0vabc1t2wens" path="res://assets/easy Small.png" id="2_cd55w"]
-[ext_resource type="Texture2D" uid="uid://b5ciqlfnvm6qc" path="res://assets/med Small.png" id="3_5s0bn"]
-[ext_resource type="Texture2D" uid="uid://i7v60vrgtwtg" path="res://assets/hard Small.png" id="4_hebda"]
+[ext_resource type="Texture2D" uid="uid://38ufw5dl6ma7" path="res://assets/level-pics/l1.png" id="2_ko2ot"]
+[ext_resource type="Texture2D" uid="uid://bxa7fllm5bnpw" path="res://assets/level-pics/l2.png" id="3_bdfgv"]
+[ext_resource type="Texture2D" uid="uid://c6i7yw7xaft" path="res://assets/level-pics/L3.png" id="4_nemrn"]
 
 [node name="Level_select" type="Node2D"]
 
 [node name="Level_item" type="Node2D" parent="."]
-position = Vector2(198, 265)
+position = Vector2(101, 150)
+scale = Vector2(0.52, 0.52)
 script = ExtResource("1_1ev41")
 level_num = "1"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_item"]
-texture = ExtResource("2_cd55w")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_ko2ot")
 
 [node name="Label" type="Label" parent="Level_item"]
 offset_left = -137.0
@@ -32,12 +34,14 @@ scale = Vector2(5.92, 5.92)
 text = "Play"
 
 [node name="Level_item2" type="Node2D" parent="."]
-position = Vector2(564, 264)
+position = Vector2(302, 156)
+scale = Vector2(0.48, 0.48)
 script = ExtResource("1_1ev41")
 level_num = "2"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_item2"]
-texture = ExtResource("3_5s0bn")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_bdfgv")
 
 [node name="Label" type="Label" parent="Level_item2"]
 offset_left = -137.0
@@ -56,13 +60,16 @@ scale = Vector2(5.92, 5.92)
 text = "Play"
 
 [node name="Level_item3" type="Node2D" parent="."]
-position = Vector2(938, 264)
+position = Vector2(474, 158)
+scale = Vector2(0.48, 0.48)
 script = ExtResource("1_1ev41")
 level_num = "3"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_item3"]
 position = Vector2(-2, 0)
-texture = ExtResource("4_hebda")
+rotation = 3.55493
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_nemrn")
 
 [node name="Label" type="Label" parent="Level_item3"]
 offset_left = -137.0
@@ -79,16 +86,6 @@ offset_right = -91.0
 offset_bottom = 225.0
 scale = Vector2(5.92, 5.92)
 text = "Play"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 1039.0
-offset_top = -1.00003
-offset_right = 1185.0
-offset_bottom = 74.0
-scale = Vector2(0.76244, 1.82084)
-text = "WIP
-\"Work In Progress\"
-TODO!"
 
 [connection signal="pressed" from="Level_item/Button" to="Level_item" method="_on_button_pressed"]
 [connection signal="pressed" from="Level_item2/Button" to="Level_item2" method="_on_button_pressed"]
