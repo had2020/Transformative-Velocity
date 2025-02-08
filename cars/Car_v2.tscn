@@ -1,0 +1,145 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnd0nige4q405"]
+
+[ext_resource type="Script" path="res://cars/BaseCar.gd" id="1_2xnuv"]
+[ext_resource type="ArrayMesh" uid="uid://psmpaoaoaavp" path="res://assets/models/ferrari 288 gto.obj" id="2_iknuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mm2gk"]
+size = Vector3(1.9717, 1, 2.08592)
+
+[node name="car" type="VehicleBody3D"]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.1, 0)
+script = ExtResource("1_2xnuv")
+
+[node name="wheal0" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal1" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, -1.57977)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03343, 0.340338, 1.51869)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="wheal3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.02622, 0.340338, 1.51869)
+use_as_traction = true
+wheel_roll_influence = 0.5
+wheel_radius = 0.431
+wheel_rest_length = 0.3
+wheel_friction_slip = 3.0
+suspension_stiffness = 30.0
+suspension_max_force = 10000.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.689432, -0.062412)
+shape = SubResource("BoxShape3D_mm2gk")
+
+[node name="Hud" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="speed" type="Label" parent="Hud"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -628.0
+offset_right = 20.0
+offset_bottom = -559.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+
+[node name="Up_Button" type="Button" parent="Hud"]
+modulate = Color(0, 1, 0, 1)
+offset_left = 69.8362
+offset_top = 271.0
+offset_right = 90.8362
+offset_bottom = 302.0
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Down_Button" type="Button" parent="Hud"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 152.0
+offset_top = 538.0
+offset_right = 173.0
+offset_bottom = 569.0
+rotation = 3.15044
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Left_button" type="Button" parent="Hud"]
+modulate = Color(0, 1, 0, 1)
+offset_left = 813.0
+offset_top = 583.834
+offset_right = 834.0
+offset_bottom = 614.834
+rotation = -1.55914
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Right_button" type="Button" parent="Hud"]
+modulate = Color(1, 0, 0, 1)
+offset_left = 1092.0
+offset_top = 505.834
+offset_right = 1113.0
+offset_bottom = 536.834
+rotation = -4.69519
+scale = Vector2(3.99235, 3.99235)
+text = "/\\"
+
+[node name="Exit_bp" type="Button" parent="Hud"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(2.06279, 2.18174)
+text = "Exit"
+
+[node name="Restart_bp" type="Button" parent="Hud"]
+offset_left = 1024.0
+offset_right = 1089.0
+offset_bottom = 31.0
+scale = Vector2(1.97393, 2.41393)
+text = "Restart"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.988387, 0.151961, 0, -0.151961, 0.988387, 0, 2.16054, 4.18941)
+
+[node name="Ferrari288Gto" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -5.79158, 3.8147e-06, 7.4623)
+mesh = ExtResource("2_iknuy")
+
+[connection signal="button_down" from="Hud/Up_Button" to="." method="_on_up_button_button_down"]
+[connection signal="button_up" from="Hud/Up_Button" to="." method="_on_up_button_button_up"]
+[connection signal="button_down" from="Hud/Down_Button" to="." method="_on_down_button_button_down"]
+[connection signal="button_up" from="Hud/Down_Button" to="." method="_on_down_button_button_up"]
+[connection signal="button_down" from="Hud/Left_button" to="." method="_on_left_button_button_down"]
+[connection signal="button_up" from="Hud/Left_button" to="." method="_on_left_button_button_up"]
+[connection signal="button_down" from="Hud/Right_button" to="." method="_on_right_button_button_down"]
+[connection signal="button_up" from="Hud/Right_button" to="." method="_on_right_button_button_up"]
+[connection signal="pressed" from="Hud/Exit_bp" to="." method="_on_exit_bp_pressed"]
+[connection signal="pressed" from="Hud/Restart_bp" to="." method="_on_restart_bp_pressed"]

@@ -1,69 +1,88 @@
-[gd_scene load_steps=11 format=3 uid="uid://c1j8o5i6575ny"]
+[gd_scene load_steps=10 format=3 uid="uid://c1j8o5i6575ny"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_hi6ks"]
-[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_6x5s0"]
-[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="3_uwnnm"]
-[ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_fidgd"]
-[ext_resource type="PackedScene" uid="uid://61ut5m70glvx" path="res://scenes/finish_line.tscn" id="5_isi3j"]
+[ext_resource type="AudioStream" uid="uid://6cxqymlqlgb7" path="res://assets/sounds/boss.mp3" id="2_hi6ks"]
+[ext_resource type="ArrayMesh" uid="uid://biele437g6mql" path="res://assets/models/10605_Slot_Car_Race_Track_v1_L3.obj" id="4_ku6r7"]
+[ext_resource type="PackedScene" uid="uid://cnd0nige4q405" path="res://cars/Car_v2.tscn" id="5_hi6ks"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5hklr"]
-sky_top_color = Color(0, 0.769445, 0.820386, 1)
-sky_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
-ground_bottom_color = Color(1, 0.301961, 0, 1)
-ground_horizon_color = Color(0.25, 0.267851, 0.705097, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ku6r7"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.252941, 0.639021, 0.892154, 1)
+sky_energy_multiplier = 0.75
+ground_bottom_color = Color(0.0117647, 0.0117647, 1, 1)
+ground_horizon_color = Color(0.252941, 0.639021, 0.892154, 1)
 
-[sub_resource type="Sky" id="Sky_htovp"]
-sky_material = SubResource("ProceduralSkyMaterial_5hklr")
+[sub_resource type="Sky" id="Sky_hi6ks"]
+sky_material = SubResource("ProceduralSkyMaterial_ku6r7")
 
-[sub_resource type="Environment" id="Environment_0ayn8"]
+[sub_resource type="Environment" id="Environment_6x5s0"]
 background_mode = 2
-sky = SubResource("Sky_htovp")
+sky = SubResource("Sky_hi6ks")
 tonemap_mode = 2
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rbbjd"]
-friction = 0.4
-bounce = 10.0
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ku6r7"]
+radius = 0.299316
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wnsn"]
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ku6r7"]
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_hi6ks")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0ayn8")
+environment = SubResource("Environment_6x5s0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="car" parent="." instance=ExtResource("2_6x5s0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.160996, 0, 2.26377)
-mass = 20.0
-physics_material_override = SubResource("PhysicsMaterial_rbbjd")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_uwnnm")
+stream = ExtResource("2_hi6ks")
 autoplay = true
 
 [node name="Lava" type="Area3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0.000709534, -109.029, -0.0475006)
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0.001, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lava"]
-shape = SubResource("WorldBoundaryShape3D_2wnsn")
+transform = Transform3D(1.95382, 0, 0, 0, 0.260155, 0, 0, 0, 6.84356, 2.03053, 0.00634575, -2.38362)
+shape = SubResource("CylinderShape3D_ku6r7")
 
-[node name="floors" type="Node3D" parent="."]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Lava"]
+transform = Transform3D(1.41676, 0, 0.0422422, 0, 0.260155, 0, -1.34544, 0, 0.0444814, -0.0925266, 0.00634575, -7.73196)
+shape = SubResource("CylinderShape3D_ku6r7")
 
-[node name="floor_tile" parent="floors" instance=ExtResource("4_fidgd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00919151, 0.0328088, 0.0199165)
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Lava"]
+transform = Transform3D(1.61083, 0, -0.0347161, 0, 0.260155, 0, 1.10573, 0, 0.0505746, 3.95299, 0.00634575, -7.8657)
+shape = SubResource("CylinderShape3D_ku6r7")
 
-[node name="floor_tile2" parent="floors" instance=ExtResource("4_fidgd")]
-transform = Transform3D(1, 0, 0, 0, 0.999522, 1.86519, 0, -0.0309223, 60.2897, -0.00919151, -18.7012, -612.769)
+[node name="car" parent="." instance=ExtResource("5_hi6ks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.179815, 0.147404, 3.53386)
 
-[node name="floor_tile3" parent="floors" instance=ExtResource("4_fidgd")]
-transform = Transform3D(1, 0, 0, 0, 0.730008, -2.41984, 0, 0.72546, 2.435, -0.00919151, -37.4671, -1215.53)
+[node name="slot" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 20.1614, -1.4476, -24.0045)
+mesh = ExtResource("4_ku6r7")
 
-[node name="Finish line" parent="floors" instance=ExtResource("5_isi3j")]
-transform = Transform3D(0.999617, 0, 0, 0, 0.999617, 0, 0, 0, 0.999617, 0.398118, -8.93612, -1241.13)
+[node name="Road" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3561, 0, -21.6942)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Road"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.690357, 0)
+shape = SubResource("WorldBoundaryShape3D_ku6r7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Road"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -33.684, -0.690357, 0)
+shape = SubResource("WorldBoundaryShape3D_ku6r7")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Road"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 33.2592, -0.690357, 0)
+shape = SubResource("WorldBoundaryShape3D_ku6r7")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Road"]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0.103514, -0.690357, 58.2994)
+shape = SubResource("WorldBoundaryShape3D_ku6r7")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Road"]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0.103514, -0.690357, -63.075)
+shape = SubResource("WorldBoundaryShape3D_ku6r7")
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="area_entered" from="Lava" to="." method="_on_lava_area_entered"]

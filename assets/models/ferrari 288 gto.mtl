@@ -1,0 +1,240 @@
+newmtl Gto84steer0081Mtl
+Material Color
+Ka 0.00552174 0.00552174 0.00552174
+Kd 0.00552174 0.00552174 0.00552174
+Ks 0.00218704 0.00218704 0.00218704 
+
+d 1
+
+Ns 0
+
+newmtl Gto84steer0111Mtl
+Material Color
+Ka 0.00552174 0.00552174 0.00552174
+Kd 0.00552174 0.00552174 0.00552174
+Ks 0.000346462 0.000346462 0.000346462 
+
+d 1
+
+Ns 0
+
+newmtl Gto84steer1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84steer1_diff.png
+map_Kd Gto84steer1_diff.png
+map_d Gto84steer1_diff.png
+
+newmtl Gto84headlightframer1Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 0.752941
+
+Ns 0
+
+map_Ka Gto84headlightframer0021_diff.png
+map_Kd Gto84headlightframer0021_diff.png
+map_d Gto84headlightframer0021_diff.png
+
+newmtl Gto84steer0071Mtl
+Material Color
+Ka 1 1 0
+Kd 1 1 0
+Ks 0.396078 0.396078 0 
+
+d 1
+
+Ns 0
+
+newmtl Gto84nosecone0041Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84nosecone0041_diff.png
+map_Kd Gto84nosecone0041_diff.png
+map_d Gto84nosecone0041_diff.png
+
+newmtl Gto84headlightframer0031Mtl
+Material Color
+Ka 0.2468 0.0370285 0.00658496
+Kd 0.2468 0.0370285 0.00658496
+Ks 0.0977523 0.0146662 0.00260816 
+
+d 1
+
+Ns 0
+
+newmtl Gto84headlightframer0021Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84headlightframer0021_diff.png
+map_Kd Gto84headlightframer0021_diff.png
+map_d Gto84headlightframer0021_diff.png
+
+newmtl Gto84body0121Mtl
+Material Color
+Ka 0.00258583 0.00258583 0.00258583
+Kd 0.00258583 0.00258583 0.00258583
+Ks 0.00102419 0.00102419 0.00102419 
+
+d 1
+
+Ns 0
+
+newmtl Gto84headlightframer0011Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.147981 0.145991 0.152005 
+
+d 1
+
+Ns 0
+
+newmtl Gto84fenderr1Mtl
+Material Color
+Ka 0.103634 0.108711 0.14198
+Kd 0.103634 0.108711 0.14198
+Ks 0.0410472 0.0430581 0.0562353 
+
+d 1
+
+Ns 0
+
+newmtl Gto84doorglassr1Mtl
+Material Color
+Ka 0.00969633 0.00837312 0.022013
+Kd 0.00969633 0.00837312 0.022013
+Ks 0.00384051 0.00331641 0.00871887 
+
+d 0.25098
+
+Ns 0
+
+newmtl Gto84doorr0041Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84doorr0041_diff.png
+map_Kd Gto84doorr0041_diff.png
+map_d Gto84doorr0041_diff.png
+
+newmtl Gto84nosecone0071Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84nosecone0041_diff.png
+map_Kd Gto84nosecone0041_diff.png
+map_d Gto84nosecone0041_diff.png
+
+newmtl Gto84seatl0021Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84seatl0021_diff.png
+map_Kd Gto84seatl0021_diff.png
+map_d Gto84seatl0021_diff.png
+
+newmtl Gto84nosecone0081Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1 
+
+d 0.803922
+
+Ns 0
+
+map_Ka Gto84headlightframer0021_diff.png
+map_Kd Gto84headlightframer0021_diff.png
+map_d Gto84headlightframer0021_diff.png
+
+newmtl Gto84body0151Mtl
+Material Color
+Ka 0.373615 0.368591 0.383775
+Kd 0.373615 0.368591 0.383775
+Ks 0.147981 0.145991 0.152005 
+
+d 0.0509804
+
+Ns 0
+
+newmtl Gto84body0011Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.0627451 0.0627451 0.0627451 
+
+d 1
+
+Ns 0
+
+map_Ka Gto84body0011_diff.png
+map_Kd Gto84body0011_diff.png
+map_d Gto84body0011_diff.png
+
+newmtl Gto84taillightr0041Mtl
+Material Color
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.396078 0.396078 0.396078 
+
+d 0.803922
+
+Ns 0
+
+map_Ka Gto84nosecone0041_diff.png
+map_Kd Gto84nosecone0041_diff.png
+map_d Gto84nosecone0041_diff.png
+
+newmtl Gto84windshield1Mtl
+Material Color
+Ka 0.00969633 0.00837312 0.022013
+Kd 0.00969633 0.00837312 0.022013
+Ks 0.00384051 0.00331641 0.00871887 
+
+d 0.101961
+
+Ns 0
+
