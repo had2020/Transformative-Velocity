@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://blkasq375agl8"]
+[gd_scene load_steps=7 format=3 uid="uid://blkasq375agl8"]
 
 [ext_resource type="Script" path="res://scenes/level_item.gd" id="1_1ev41"]
 [ext_resource type="Texture2D" uid="uid://38ufw5dl6ma7" path="res://assets/level-pics/l1.png" id="2_ko2ot"]
 [ext_resource type="Texture2D" uid="uid://bxa7fllm5bnpw" path="res://assets/level-pics/l2.png" id="3_bdfgv"]
 [ext_resource type="Texture2D" uid="uid://c6i7yw7xaft" path="res://assets/level-pics/L3.png" id="4_nemrn"]
 [ext_resource type="Texture2D" uid="uid://vehwuxypoyug" path="res://assets/level-pics/l4.png" id="5_chg43"]
+[ext_resource type="Texture2D" uid="uid://cp6hlfpmef2vp" path="res://assets/level-pics/l5.png" id="6_r77uv"]
 
 [node name="Level_select" type="Node2D"]
 
@@ -122,10 +123,9 @@ script = ExtResource("1_1ev41")
 level_num = "5"
 
 [node name="Sprite2D" type="Sprite2D" parent="Level_item5"]
-position = Vector2(-2, 0)
-rotation = 3.14159
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("5_chg43")
+position = Vector2(-2.08329, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_r77uv")
 
 [node name="Label" type="Label" parent="Level_item5"]
 offset_left = -137.0
@@ -143,8 +143,36 @@ offset_bottom = 225.0
 scale = Vector2(5.92, 5.92)
 text = "Play"
 
+[node name="Level_item6" type="Node2D" parent="."]
+position = Vector2(938, 150)
+scale = Vector2(0.48, 0.48)
+script = ExtResource("1_1ev41")
+level_num = "6"
+
+[node name="Sprite2D" type="Sprite2D" parent="Level_item6"]
+position = Vector2(-2.08329, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_r77uv")
+
+[node name="Label" type="Label" parent="Level_item6"]
+offset_left = -137.0
+offset_top = -282.0
+offset_right = -46.0
+offset_bottom = -259.0
+scale = Vector2(4.84, 4.84)
+text = "Level 2"
+
+[node name="Button" type="Button" parent="Level_item6"]
+offset_left = -132.0
+offset_top = 194.0
+offset_right = -91.0
+offset_bottom = 225.0
+scale = Vector2(5.92, 5.92)
+text = "Play"
+
 [connection signal="pressed" from="Level_item/Button" to="Level_item" method="_on_button_pressed"]
 [connection signal="pressed" from="Level_item2/Button" to="Level_item2" method="_on_button_pressed"]
 [connection signal="pressed" from="Level_item3/Button" to="Level_item3" method="_on_button_pressed"]
 [connection signal="pressed" from="Level_item4/Button" to="Level_item4" method="_on_button_pressed"]
 [connection signal="pressed" from="Level_item5/Button" to="Level_item5" method="_on_button_pressed"]
+[connection signal="pressed" from="Level_item6/Button" to="Level_item6" method="_on_button_pressed"]

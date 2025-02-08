@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq4isvtuvdmfe"]
+[gd_scene load_steps=11 format=3 uid="uid://c1j8o5i6575ny"]
 
-[ext_resource type="Script" path="res://scenes/level.gd" id="1_tbt7t"]
-[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_cynta"]
-[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="3_ak5vt"]
-[ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_ij176"]
-[ext_resource type="PackedScene" uid="uid://61ut5m70glvx" path="res://scenes/finish_line.tscn" id="5_uva14"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_hi6ks"]
+[ext_resource type="PackedScene" uid="uid://duy0dbkychify" path="res://cars/BaseCar.tscn" id="2_6x5s0"]
+[ext_resource type="AudioStream" uid="uid://ckvpt2qrxs7my" path="res://assets/sounds/happy.mp3" id="3_uwnnm"]
+[ext_resource type="PackedScene" uid="uid://c3uk6bbkmlydk" path="res://scenes/floor_tile.tscn" id="4_fidgd"]
+[ext_resource type="PackedScene" uid="uid://61ut5m70glvx" path="res://scenes/finish_line.tscn" id="5_isi3j"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5hklr"]
 sky_top_color = Color(0, 0.769445, 0.820386, 1)
@@ -27,7 +27,7 @@ bounce = 10.0
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wnsn"]
 
 [node name="Level" type="Node3D"]
-script = ExtResource("1_tbt7t")
+script = ExtResource("1_hi6ks")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0ayn8")
@@ -36,13 +36,13 @@ environment = SubResource("Environment_0ayn8")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="car" parent="." instance=ExtResource("2_cynta")]
+[node name="car" parent="." instance=ExtResource("2_6x5s0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.160996, 0, 2.26377)
 mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_rbbjd")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ak5vt")
+stream = ExtResource("3_uwnnm")
 autoplay = true
 
 [node name="Lava" type="Area3D" parent="."]
@@ -53,16 +53,16 @@ shape = SubResource("WorldBoundaryShape3D_2wnsn")
 
 [node name="floors" type="Node3D" parent="."]
 
-[node name="floor_tile" parent="floors" instance=ExtResource("4_ij176")]
+[node name="floor_tile" parent="floors" instance=ExtResource("4_fidgd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00919151, 0.0328088, 0.0199165)
 
-[node name="floor_tile2" parent="floors" instance=ExtResource("4_ij176")]
+[node name="floor_tile2" parent="floors" instance=ExtResource("4_fidgd")]
 transform = Transform3D(1, 0, 0, 0, 0.999522, 1.86519, 0, -0.0309223, 60.2897, -0.00919151, -18.7012, -612.769)
 
-[node name="floor_tile3" parent="floors" instance=ExtResource("4_ij176")]
+[node name="floor_tile3" parent="floors" instance=ExtResource("4_fidgd")]
 transform = Transform3D(1, 0, 0, 0, 0.730008, -2.41984, 0, 0.72546, 2.435, -0.00919151, -37.4671, -1215.53)
 
-[node name="Finish line" parent="floors" instance=ExtResource("5_uva14")]
+[node name="Finish line" parent="floors" instance=ExtResource("5_isi3j")]
 transform = Transform3D(0.999617, 0, 0, 0, 0.999617, 0, 0, 0, 0.999617, 0.398118, -8.93612, -1241.13)
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
