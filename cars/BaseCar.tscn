@@ -185,6 +185,8 @@ mesh = SubResource("CapsuleMesh_5vxln")
 transform = Transform3D(-2.44093, -7.19857e-16, -5.91274e-08, 2.15446e-07, 0.0716643, -0.228899, 2.99043e-07, -0.0516308, -0.317714, 0, 0.990425, 2.22218)
 mesh = SubResource("BoxMesh_u5god")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="rail"]
+
 [node name="bar" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 9.38864e-09, -8.79886e-08, 7.53741e-08, 0.00486435, -0.607099, -5.08612e-08, -0.0850878, -0.034707, 0.772402, 0.633444, 2.17447)
 mesh = SubResource("BoxMesh_u5god")
@@ -194,11 +196,15 @@ transform = Transform3D(-0.5, 9.38483e-09, -8.83749e-08, 7.53741e-08, 0.0048624,
 mesh = SubResource("BoxMesh_u5god")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.39692, 0, 0, 0, 0.37869, -0.535649, 0, 0.0923218, 2.19716, -0.0277523, 0.556672, 0.147649)
+transform = Transform3D(1.39692, 0, 0, 0, 0.37869, -0.535649, 0, 0.0923218, 2.19716, -0.0291503, 0.554806, 0.145713)
 mesh = SubResource("BoxMesh_qoqf8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
 transform = Transform3D(0.495108, 0, 0, 0, 0.765365, 0, 0, 0, 0.0375657, 0, 0.548241, -0.0230364)
+mesh = SubResource("PlaneMesh_1e5dl")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-2.16419e-08, 0, 0.0375657, 2.98023e-07, 0.765365, 8.88178e-16, -0.495108, -3.72529e-09, -1.64205e-09, 0.00282739, 0.506056, -0.0182306)
 mesh = SubResource("PlaneMesh_1e5dl")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
